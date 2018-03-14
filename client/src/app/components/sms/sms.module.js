@@ -1,4 +1,6 @@
 import uiRouter from 'angular-ui-router';
+import { SMSService } from './sms.service';
+import { SMSFormModule } from './sms-form/sms-form.module';
 import { SMSComponent } from './sms.component';
 
 export const sms = angular
@@ -6,6 +8,7 @@ export const sms = angular
     uiRouter,
   ])
   .component('sms', SMSComponent)
+  .service('SMSService', SMSService)
   .config(($stateProvider, $urlRouterProvider) => {
     'ngInject';
 
