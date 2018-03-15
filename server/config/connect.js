@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Mockgoose = require('mockgoose').Mockgoose;
 const mockgoose = new Mockgoose(mongoose);
 
+mongoose.Promise = global.Promise;
+
 const db = (mongo_url) => {
   if (process.env.NODE_ENV === 'test') {
     mockgoose.prepareStorage().then(() => {

@@ -5,7 +5,7 @@ var expect = chai.expect;
 var mongoose = require('mongoose');
 require('sinon-mongoose');
 
-var Message = require('../../models/message.model');
+var Message = require('../../models/message');
 
 describe('Message', () => {
   it('should be invalid if content is empty', (done) => {

@@ -12,6 +12,10 @@ const MessageSchema = Schema({
   }
 });
 
+MessageSchema.statics.findAll = function() {
+  return this.find({});
+};
+
 const MessageModel = mongoose.model('Message', MessageSchema);
 
 module.exports = MessageModel;
