@@ -8,8 +8,15 @@ const MessageController = (Message) => {
       });
     }),
 
-    saveMessage: ((req, res, next) => {
-      res.json('Topzera irmão');
+    saveMessage: ( async (req, res, next) => {
+      try {
+        let message = await Message.create(req.body);
+        res.json({ message });
+      } catch(e) {
+        res.status(422).json({
+          errors: [e.message]
+        }) 
+      }
     }),
   }
 }

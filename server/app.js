@@ -14,6 +14,10 @@ app.use(cookieParser());
 
 require('./router/router')(app);
 
+process.on('unhandledRejection', (err) => {
+  console.log('FATAL:', err);
+});
+
 module.exports = app;
 
 
