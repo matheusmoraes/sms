@@ -4,6 +4,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var config = require('./config/config');
+var Message = require('./models/message.model');
+
+var db = require('./config/connect')(config.db);
 
 var app = express();
 
@@ -11,11 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.get('/teste', (req, res) => {
+  let msg = new Message({ content: 'teste' });
 
-mongoose.connect(config.db);
-mongoose.connection.on('connected', function() {
-  console.log('Mongoose default connection ', config.db);
+  msg.save((err, { content }) => {
+    res.json({ content });
+  });
+
 });
-
 
 module.exports = app;
