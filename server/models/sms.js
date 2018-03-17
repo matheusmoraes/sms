@@ -65,4 +65,59 @@ class TextToSMSParser {
 }
 
 
-module.exports = TextToSMSParser;
+class SMSToTextParser {
+
+  constructor() {
+    this.letters = { 
+      'abc': 2,
+      'def': 3,
+      'ghi': 4,
+      'jkl': 5,
+      'mno': 6,
+      'pqrs': 7,
+      'tuv': 8,
+      'wxyz': 9,
+      ' ': 0
+    }
+  }
+
+  parse(smsEncodedText) {
+    if (smsEncodedText.length == 0) {
+      return ''
+    }
+
+    let result = []
+    let lastChar = smsEncodedText[0];
+    let counter = 1;
+
+    for (let i=1; i <= smsEncodedText.length; i++) {
+      let currentChar = smsEncodedText[i];
+      if (currentChar == lastChar) {
+        counter++; 
+      } else {
+
+        for (let key in this.letters) {
+          if(this.letters[key] == lastChar) {
+
+            let actualChar = key[counter-1]; 
+            result.push(actualChar);
+            break;
+
+          }
+        }
+
+        counter = 1;
+        lastChar = currentChar;
+      }
+    }
+
+    return result.join('');
+  }
+
+}
+
+
+module.exports =  {
+  TextToSMSParser,
+  SMSToTextParser
+}
