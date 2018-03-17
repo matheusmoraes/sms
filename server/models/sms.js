@@ -15,27 +15,53 @@ class TextToSMSParser {
   }
 
   parse(text) {
-    let result = [];
-    let lastChar = undefined;
+    this.lastChar = undefined;
+    this.result = [];
     text = text.toLowerCase();
+    
     for (let char of text) {
-      for(let key in this.letters) {
-        if (key.indexOf(char) != -1) {
-          let count = key.indexOf(char) + 1;
-          if (this.letters[key] == lastChar) {
-            result.push('_');
-          }
-          for(let i=0; i < count; i++) {
-            result.push(this.letters[key]);
-          }
-          lastChar = this.letters[key];
-          break;
-        }
-      }
+      const key = this.findKeyForChar(char);
+      const parsedChar = this.letters[key];
+      const repeatTimes = key.indexOf(char) + 1;
+
+      this.addPrefixIfNeeded(parsedChar);
+      this.addParsedChar(parsedChar, repeatTimes);
+      this.lastChar = parsedChar;
     }
 
-    return result.join('');
+    return this.result.join('');
   }
+
+  findKeyForChar(char) {
+    for(let key in this.letters) {
+      if (key.indexOf(char) != -1) {
+        return key;
+      }
+    }
+  }
+
+  addPrefixIfNeeded(char) {
+    if (this.shouldAddPrefix(char)) {
+      this.result.push('_');
+    }
+  }
+
+  shouldAddPrefix(char) {
+    return char == this.lastChar;
+  }
+
+  addParsedChar(parsedChar, repeatTimes) {
+    this.result.push(this.multiplyChar(parsedChar, repeatTimes));
+  }
+
+  multiplyChar(char, repeatTimes) {
+    let result = ''
+    for(let i=0; i < repeatTimes; i++) {
+      result += char;
+    }
+    return result;
+  }
+
 }
 
 
