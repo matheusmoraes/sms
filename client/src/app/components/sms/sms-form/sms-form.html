@@ -3,8 +3,10 @@
   <p class="control is-expanded">
     <input 
       ng-model="$ctrl.newMessage"
-      ng-change="$ctrl.validateNewMessage()"
+      ng-change="$ctrl.validateNewMessage();"
+      ng-keyup="$ctrl.parseMessage(); $ctrl.updateRemainingCharacters();"
       ng-disabled="$ctrl.isLoading"
+      maxlength="255"
       class="input" 
       type="text" 
       placeholder="Digite uma mensagem">
@@ -16,4 +18,11 @@
       ng-class="{'is-loading': $ctrl.isLoading }"
       class="button is-info">Enviar</a>
   </p>
+  <p class="help">{{ $ctrl.remainingChars }}</p>
+</div>
+
+<div class="field" ng-show="$ctrl.parsedMessage.length > 0">
+  <div class="control">
+    <textarea class="textarea" ng-model="$ctrl.parsedMessage" disabled></textarea>
+  </div>
 </div>
