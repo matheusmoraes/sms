@@ -3,7 +3,7 @@ export class SMSService {
   constructor($http) {
     'ngInject';
     this.$http = $http;
-		this.url = 'http://localhost:3000/api/sms';
+		this.url = 'http://localhost:3000/api/messages';
   }
 
   getSMSs() {
@@ -12,9 +12,9 @@ export class SMSService {
       .then(response => response.data);
   }
 
-	addSMS({ content }) {
+	addSMS(content) {
 		console.log('Saving sms', content);
-		return this.$http.post(this.url, data)
-			.then(response => console.log(response));
+		return this.$http.post(this.url, content)
+			.then(response => response.data);
 	}
 }

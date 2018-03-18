@@ -1,3 +1,11 @@
-<div>
-  <h1 class="title is-1">sms.html topzera</h1>
+<div class="box">
+  <h1 class="title is-1">Mensagens</h1>
+  <sms-form 
+    on-add-message="$ctrl.addMessage($event);"
+    new-message="$ctrl.newMessage"
+    is-loading="$ctrl.isLoading">
+  </sms-form>
+  <sms-list 
+    messages="$ctrl.smsData">
+  </sms-list>
 </div>

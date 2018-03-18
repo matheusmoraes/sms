@@ -1,0 +1,19 @@
+
+<div class="field is-grouped">
+  <p class="control is-expanded">
+    <input 
+      ng-model="$ctrl.newMessage"
+      ng-change="$ctrl.validateNewMessage()"
+      ng-disabled="$ctrl.isLoading"
+      class="input" 
+      type="text" 
+      placeholder="Digite uma mensagem">
+  </p>
+  <p class="control">
+    <a
+      ng-click="$ctrl.onSubmit();" 
+      ng-disabled="!$ctrl.isNewMessageValid"
+      ng-class="{'is-loading': $ctrl.isLoading }"
+      class="button is-info">Enviar</a>
+  </p>
+</div>
