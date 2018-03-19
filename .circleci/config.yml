@@ -40,8 +40,8 @@ jobs:
               mv /tmp/docker/* /usr/bin
       
       - run: |
-          docker build -t matheusmoraes/sms .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t matheusmoraes/sms .
           docker push matheusmoraes/sms
 
 
