@@ -5,8 +5,7 @@
   "description": "SMS Service",
   "scripts": {
     "start": "webpack-dev-server -d --progress --colors --inline --hot --open --content-base bin/",
-    "test:cli": "karma start",
-    "test:server": "mocha server/**/**.spec.js"
+    "test:server": "NODE_ENV=test mocha server/**/**.spec.js"
   },
   "license": "MIT",
   "dependencies": {

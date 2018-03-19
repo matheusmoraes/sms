@@ -3,7 +3,7 @@ export class SMSService {
   constructor($http) {
     'ngInject';
     this.$http = $http;
-		this.url = 'http://localhost:3000/api/messages';
+    this.url = API_URL + 'api/messages';
   }
 
   getSMSs() {

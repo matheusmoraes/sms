@@ -2,6 +2,8 @@ const cleanPlugin = require('clean-webpack-plugin');
 const copyPlugin = require('copy-webpack-plugin');
 const extractPlugin = require('extract-text-webpack-plugin');
 
+const webpack = require('webpack');
+
 const root = `${__dirname}/client/src`;
 const dist = `${__dirname}/client/dist`;
 const paths = {
@@ -13,6 +15,13 @@ const paths = {
     images: `${root}/img/**/*`,
   },
 };
+
+let API_URL;
+if (process.env.NODE_ENV == 'prod') {
+  API_URL = "'/'"
+} else {
+  API_URL = "'http://localhost:3000'"
+}
 
 // Plugins
 const prep = {
@@ -74,6 +83,7 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({ API_URL: API_URL }),
     prep.clean,
     prep.copy,
     extract.styles,

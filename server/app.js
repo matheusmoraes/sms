@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+app.use(express.static(__dirname + '/../client/dist'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
