@@ -40,9 +40,10 @@ jobs:
               mv /tmp/docker/* /usr/bin
       
       - run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t matheusmoraes/sms .
-          docker push matheusmoraes/sms
+          docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+          docker build -t sms .
+          docker tag sms registry.heroku.com/gsw-sms-teste/web
+          docker push registry.heroku.com/gsw-sms-teste/web
 
 
 
