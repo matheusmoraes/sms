@@ -14,5 +14,9 @@ describe('Message', () => {
       expect(err.errors.content).to.exist;
       done();
     });
+  });
+
+  it('test CI hmmm', () => {
+    expect(1).to.be.equal(2);
   })
 });
