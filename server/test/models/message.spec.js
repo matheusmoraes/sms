@@ -15,8 +15,4 @@ describe('Message', () => {
       done();
     });
   });
-
-  it('test CI hmmm', () => {
-    expect(1).to.be.equal(2);
-  })
 });

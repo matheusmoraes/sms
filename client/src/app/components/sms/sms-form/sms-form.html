@@ -28,6 +28,7 @@
       ng-change="$ctrl.validateNewMessage();"
       ng-keyup="$ctrl.parseMessage(); $ctrl.updateRemainingCharacters();"
       ng-disabled="$ctrl.isLoading"
+      ng-class="{ 'is-danger': !$ctrl.canParse }"
       maxlength="255"
       class="input" 
       type="text" 

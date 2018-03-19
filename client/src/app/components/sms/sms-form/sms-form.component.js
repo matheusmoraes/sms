@@ -16,6 +16,7 @@ export const SMSFormComponent = {
 
     $onInit() {
       this.smsOrTextParser = 'textToSMS'
+      this.canParse = true;
       this.maxLength = 255;
       this.remainingChars = 255;
       this.parsedMessage = '';
@@ -46,7 +47,12 @@ export const SMSFormComponent = {
     }
 
     parseMessage() {
-      this.parsedMessage = this.parser.parse(this.newMessage);
+      try {
+        this.parsedMessage = this.parser.parse(this.newMessage);
+        this.canParse = true;
+      } catch (e) {
+        this.canParse = false;
+      }
     }
 
     updateRemainingCharacters() {
