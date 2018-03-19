@@ -1,3 +1,25 @@
+<div class="field">
+  <div class="control">
+    <label class="radio">
+      <input 
+        ng-model="$ctrl.smsOrTextParser"
+        ng-change="$ctrl.toggleParser();"
+        value="textToSMS"
+        type="radio" 
+        name="question">
+      Texto para SMS
+    </label>
+    <label class="radio">
+      <input 
+        ng-model="$ctrl.smsOrTextParser"
+        ng-change="$ctrl.toggleParser();"
+        value="SMSToText"
+        type="radio" 
+        name="question">
+      SMS para texto
+    </label>
+  </div>
+</div>
 
 <div class="field is-grouped">
   <p class="control is-expanded">

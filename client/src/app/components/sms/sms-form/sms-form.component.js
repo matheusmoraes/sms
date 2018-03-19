@@ -1,5 +1,5 @@
 import templateUrl from './sms-form.html';
-import { TextToSMSParser } from './../../../../../../server/models/sms';
+import { TextToSMSParser, SMSToTextParser } from './../../../../../../server/models/sms';
 
 export const SMSFormComponent = {
   templateUrl,
@@ -15,10 +15,26 @@ export const SMSFormComponent = {
     }
 
     $onInit() {
+      this.smsOrTextParser = 'textToSMS'
       this.maxLength = 255;
       this.remainingChars = 255;
       this.parsedMessage = '';
       this.parser = new TextToSMSParser();
+    }
+
+    toggleParser() {
+      if (this.smsOrTextParser == 'textToSMS') {
+        this.parser = new TextToSMSParser();
+      } else {
+        this.parser = new SMSToTextParser();
+      }
+      this.toggleInputs();
+    }
+
+    toggleInputs() {
+      let aux = this.newMessage;
+      this.newMessage = this.parsedMessage;
+      this.parsedMessage = aux;
     }
 
     validateNewMessage() {
@@ -43,6 +59,8 @@ export const SMSFormComponent = {
           content: this.newMessage
         })
       );
+      this.newMessage = '';
+      this.parsedMessage = '';
     }
   },
 };
