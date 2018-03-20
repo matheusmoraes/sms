@@ -30,7 +30,8 @@ Visit http://localhost:3000
 
 #### Running on host machine
 ##### Prerequisites
-* [Node](https://nodejs.org/en/download/current/)
+* [Node 8.10.0](https://nodejs.org/en/download/current/). Consider using [NVM](https://github.com/creationix/nvm).
+
 * Set `MONGO_URL` environment variable
 
 
