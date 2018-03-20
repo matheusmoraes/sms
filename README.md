@@ -18,6 +18,7 @@ To run this app, follow the instructions.
 #### Running Inside Docker
 ##### Prerequisites
 * Install [Docker](https://docs.docker.com/install/)
+* Set `MONGO_URL` environment variable
 
 
 ```
@@ -30,6 +31,7 @@ Visit http://localhost:3000
 #### Running on host machine
 ##### Prerequisites
 * [Node](https://nodejs.org/en/download/current/)
+* Set `MONGO_URL` environment variable
 
 
 ```
@@ -47,9 +49,10 @@ $ node server/bin/www
 ```
 
 Client url: `http://localhost:8080`
+
 API url: `http://localhost:3000`
 
-Visit http://localhost:3000
+Visit http://localhost:8080
 
 ##### Running tests
 ```
