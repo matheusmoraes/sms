@@ -25,13 +25,13 @@ describe('MessageService', () => {
     this.sandbox.restore();
   })
 
-  it('createMessage should call .create', () => {
+  it('should createMessage call .create', () => {
     const content = { content: 'Teste' };
     messageService.createMessage(content);
     expect(Message.create).to.have.been.calledWith(content);
   });
 
-  it('getAllMessages should call .findAll', async () => {
+  it('should getAllMessages call .findAll', async () => {
     messageService.getAllMessages();
     expect(Message.findAll).to.have.been.called;
   });
