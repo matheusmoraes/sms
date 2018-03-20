@@ -1,4 +1,13 @@
-<div  ng-repeat="message in $ctrl.messages | orderBy: reverse:true"> 
-  {{ message.content }}
+<div 
+  ng-repeat="message in $ctrl.messages | orderBy: reverse:true"
+  class="columns"> 
+  <div class="column">
+    {{ message.content }}
+  </div>
+  <div class="column is-3 is-size-7">{{ message.created_at }}</div>
 </div>
+
+<h3 
+  ng-show="!$ctrl.messages.length > 0"
+  class="has-text-link is-size-5">Nenhuma Mensagem ainda!</h3>
     

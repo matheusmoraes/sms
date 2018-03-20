@@ -15,7 +15,7 @@ export const SMSComponent = {
       this.newMessage = null;
 
       this.smsService.getSMSs().then(response =>  {
-        this.smsData = response.messages
+        this.smsData = response.messages.map(this.formatCreatedAtOfMessage);
         this.isLoading = false;
       });
     }
@@ -24,10 +24,19 @@ export const SMSComponent = {
       this.isLoading = true;
 
       this.smsService.addSMS({ content: content }).then(response => {
-        this.smsData.push(response.message)
+        let message = this.formatCreatedAtOfMessage(response.message);
+        this.smsData.push(message);
         this.isLoading = false;
         this.newMessage = null;
+      }).catch(error => {
+        this.isLoading = false;
       });
+    }
+
+    formatCreatedAtOfMessage(message) {
+      let date = new Date(message.created_at);
+      message.created_at = date.toLocaleTimeString();
+      return message;
     }
   }
 }
