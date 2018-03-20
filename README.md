@@ -21,13 +21,17 @@ To run this app, follow the instructions.
 
 
 ```
-$ docker pull matheusmoraes/sms-gsw
-$ docker run -p 3000:3000 -d matheusmoraes/sms-gsw
+$ docker pull matheusmoraes/sms
+$ docker run -p 3000:3000 -d matheusmoraes/sms
 ```
 
 Visit http://localhost:3000
 
 #### Running on host machine
+##### Prerequisites
+* [Node](https://nodejs.org/en/download/current/)
+
+
 ```
 $ git clone https://github.com/matheusmoraes/sms
 $ cd sms
@@ -47,6 +51,14 @@ API url: `http://localhost:3000`
 
 Visit http://localhost:3000
 
+##### Running tests
+```
+$ npm run test:server
+```
+
+Obs: Set `NODE_ENV=test` if running mocha directly to keep your real database clean!
+
+
 ### Using CI/CD pipeline
 #### Prerequisites
 * Fork this repo
@@ -62,7 +74,7 @@ Visit http://localhost:3000
 
 1. Login with your Github account
 2. Go to *Add Projects*
-2. Select *sms* (this [forked] project) and *Set Up Project
-3. Go to yout build settings of *sms* project. 
+2. Select *sms* (this [forked] project) and *Set Up Project*
+3. Go to your build settings of *sms* project. 
 4. Add the following environment variables: `HEROKU_APP_NAME`, `HEROKU_API_KEY`, `HEROKU_LOGIN` and `MONGO_URL` with your credentials.
 4. You are good to go!
